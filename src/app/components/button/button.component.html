@@ -1,0 +1,5 @@
+<button class="main_button {{style}}" type="{{type}}" (keydown.enter)="enterPressed()" (click)="!disabled && onClick()"
+  [ngClass]="{'disabled' : disabled, 'loading' : loading}">
+  <span class="text">{{text}}</span>
+  <span class="loader"></span>
+</button>

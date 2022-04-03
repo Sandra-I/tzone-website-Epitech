@@ -1,0 +1,56 @@
+#lang_selector_container {
+    z-index: 2;
+    width: 6%;
+    position: relative;
+    margin-right: 20px;
+    display: flex;
+
+    & #lang_selector,
+    #lang_selector_options {
+        background: white;
+        border-radius: 10px;
+    }
+    & #lang_selector,
+    #lang_selector_options .lang_selector_option {
+        padding: 5px 10px;
+        padding-left: 40px;
+        font-size: 13px;
+    }
+    & #lang_selector {
+        width: 50px;
+        display: flex;
+        justify-content: space-between;
+        width: fit-content;
+        cursor: pointer;
+        margin: auto;
+        background-repeat: no-repeat;
+        background-position: left 10px top 50%;
+        background-size: 20px;
+        & #select_arrow {
+            margin-left: 5px;
+            margin-top: 2px;
+            width: 20px;
+            background-image: url("/assets/icons/select_arrow.png");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 10px;
+        }
+    }
+    & #lang_selector_options {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, 15px);
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        & .lang_selector_option {
+            cursor: pointer;
+            background-repeat: no-repeat;
+            background-position: left 10px top 50%;
+            background-size: 20px;
+            margin: auto;
+            &:hover {
+                opacity: 0.7;
+            }
+        }
+    }
+}

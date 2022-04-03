@@ -1,0 +1,73 @@
+/* You can add global styles to this file, and also import other style files */
+@import "/src/styles/main.scss";
+
+body {
+    margin: 0;
+}
+
+* {
+    font-family: var(--main_font);
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--title_font);
+    color: var(--font_grey);
+}
+
+a {
+    color: var(--blue);
+}
+
+@media screen and (max-width: 1700px) {
+    #main_container {
+        & #image_left {
+            width: 28% !important;
+        }
+    }
+}
+
+@media screen and (max-width: 1600px) {
+    #main_container {
+        #image_left {
+            width: 25% !important;
+        }
+    }
+}
+
+@media screen and (max-width: 1500px) {
+    #main_container {
+        #image_left {
+            width: 20% !important;
+        }
+    }
+}
+
+@media screen and (max-width: 1400px) {
+    #main_container {
+        #image_left {
+            width: 15% !important;
+        }
+    }
+}
+
+@media screen and (max-width: 1250px) {
+    #main_container {
+        #image_left {
+            background-image: none  !important;;
+        }
+    }
+    .page_container {
+        padding-left: 0;
+    }
+}

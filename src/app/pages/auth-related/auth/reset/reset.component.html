@@ -1,0 +1,28 @@
+<div class="card" [@card]>
+  <ng-container *ngIf="!emailSend">
+    <h1 class="card_title">{{"Réinitialiser mon mot de passe" | customTranslation: 'resetPwd'}}</h1>
+    <form *ngIf="mainForm" class="form" [formGroup]="mainForm" (ngSubmit)="submitForm()">
+      <div class="form_field">
+        <label for="email">{{'E-mail' | customTranslation}}</label>
+        <input id="email" type="email" formControlName="email">
+      </div>
+      <div class="form_button">
+        <app-button [loadingOff]="loadingOff$" [disabled]="mainForm.invalid" type="submit"
+          text="{{'Envoyer' | customTranslation}}" [style]="'plain full'"></app-button>
+      </div>
+    </form>
+    <div id="no_account" class="other_auth_method_info">
+      <span><a routerLink="/login">{{'Retour à la page de connexion' | customTranslation}}</a></span>
+    </div>
+    <div id="no_account" class="other_auth_method_info">
+      <span>{{'Pas de compte' | customTranslation}}? <a routerLink="/register">{{ 'Inscrivez-vous'|
+          customTranslation}}</a></span>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="emailSend">
+    <h1 class="card_title">{{"Un email vous a été envoyé !" | customTranslation: 'resetPwd'}}</h1>
+    <p>{{'Suivez les instructions pour réinitialiser votre mot de passe' | customTranslation: 'resetPasswordText'}} </p>
+
+
+  </ng-container>
+</div>

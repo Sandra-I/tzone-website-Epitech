@@ -1,0 +1,49 @@
+<div class="page_container" id="account_container">
+    <div *ngIf="data" id="account_content">
+        <div class="card" id="account_card">
+            <h1>{{'Informations personnelles' | customTranslation: ['account', 0]}}</h1>
+            <form *ngIf="mainForm" [formGroup]="mainForm" class="form">
+                <div class="form_field">
+                    <label for="firstName">{{'Prénom' | customTranslation}}</label>
+                    <input id="firstName" type="text" formControlName="firstName">
+                </div>
+
+                <div class="form_field">
+                    <label for="lastName">{{'Nom' | customTranslation}}</label>
+                    <input id="lastName" type="text" formControlName="lastName">
+                </div>
+
+                <div class="form_field">
+                    <label for="email">{{'E-mail' | customTranslation}}</label>
+                    <input id="email" type="email" formControlName="email">
+                </div>
+
+                <div class="form_button">
+                    <app-button [loadingOff]="loadingOff$" [disabled]="mainForm.invalid" type="submit"
+                        text="{{'Enregistrer' | customTranslation}}" (clickEvent)="submitForm()" [style]="'plain full'">
+                    </app-button>
+                </div>
+            </form>
+        </div>
+        <div *ngIf="data?.billing?.length" class="card" id="billing_card">
+            <h1>{{'Informations de facturation' | customTranslation: ['account', 2]}}</h1>
+            <ul *ngFor="let bill of data?.billing">
+                <h3>{{bill.planName}}
+                    <ng-container *ngIf="bill.id == data.planId">
+                        <span>({{'Actuel' | customTranslation}}) - </span>
+                        <a routerLink="/cancel">{{'Résilier' | customTranslation}}</a>
+                        <li *ngIf="bill.next" class="bill_element" style="margin-bottom: -15px; margin-top: 5px;">
+                            <span>{{'Prochain paiement' | customTranslation: ['account', 3]}} : {{bill.next.date | date: "dd/MM/yyyy"}}</span>
+                            <span>{{bill.next.amount | currency: 'EUR'}}</span>
+                        </li>
+                    </ng-container>
+                </h3>
+                <li *ngFor="let payments of bill.payments" class="bill_element">
+                    <span>{{payments.date | date: "dd/MM/yyyy"}}</span>
+                    <span>{{payments.amount | currency: 'EUR'}}</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</div>

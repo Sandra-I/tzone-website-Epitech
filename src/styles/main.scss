@@ -1,0 +1,35 @@
+@import './settings/colors.scss';
+@import './settings/fonts.scss';
+
+@import './elements/button.scss';
+@import './elements/toast.scss';
+@import './elements/lang_selector.scss';
+
+@import './structure/page.scss';
+@import './structure/card.scss';
+@import './structure/form.scss';
+
+.loading {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    cursor: default;
+    position: relative;
+    &:after {
+        content: " ";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        border: 4px solid var(--font_color);
+        border-color: var(--font_color) transparent var(--font_color) transparent;
+        animation: ring_rotate 1.2s linear infinite;
+    }
+    & span {
+        opacity: 0;
+    }
+}

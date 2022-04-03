@@ -1,0 +1,46 @@
+<div class="card" [@card]>
+    <h1 class="card_title">{{"Inscription" | customTranslation}}</h1>
+    <form *ngIf="mainForm" class="form" [formGroup]="mainForm" (ngSubmit)="submitForm()">
+        <div class="form_field">
+            <label for="firstName">{{'Prénom' | customTranslation}}</label>
+            <input id="firstName" type="text" formControlName="firstName">
+        </div>
+
+        <div class="form_field">
+            <label for="lastName">{{'Nom' | customTranslation}}</label>
+            <input id="lastName" type="text" formControlName="lastName">
+        </div>
+
+        <div class="form_field">
+            <label for="email">{{'E-mail' | customTranslation}}</label>
+            <input id="email" type="email" formControlName="email">
+        </div>
+
+        <div class="form_field">
+            <label for="password">{{'Mot de passe' | customTranslation}}</label>
+            <div class="input_wrap password">
+                <input #pwd1 (keyup)="checkPassword(pwd1.value, pwd2.value)" id="password" type="password"
+                    formControlName="password">
+            </div>
+        </div>
+        <div class="form_field">
+            <label for="password2">{{"Confirmer mot de passe" | customTranslation}}</label>
+            <div class="input_wrap password">
+                <input #pwd2 (keyup)="checkPassword(pwd1.value, pwd2.value)" id="password2" type="password">
+            </div>
+        </div>
+        <p class="info_legacy">{{"Pour en savoir plus sur le traitement de vos données, veuillez consulter notre" |
+            customTranslation: 'seeMore'}} <a routerLink="/privacy-policy">{{"politique de confidentialité" |
+                customTranslation:
+                'privacyPolicy'}}</a>.</p>
+        <div class="form_button">
+            <app-button [loadingOff]="loadingOff$" [disabled]="mainForm.invalid || !passwordsOk" type="submit"
+                text="{{'Connexion' | customTranslation}}" [style]="'plain full'"></app-button>
+        </div>
+    </form>
+    <div id="no_account" class="other_auth_method_info">
+        <span>{{'Déjà un compte' | customTranslation}}? <a routerLink="/login">{{ 'Connectez-vous'|
+                customTranslation}}</a></span>
+    </div>
+
+</div>

@@ -1,0 +1,7 @@
+<div class="page_container" id="auth_card_container">
+    <div id="auth_card">
+        <app-login *ngIf="['login', 'redirect'].includes(currentCard)"></app-login>
+        <app-signup *ngIf="currentCard == 'register'"></app-signup>
+        <app-reset *ngIf="currentCard == 'reset'"></app-reset>
+    </div>
+</div>

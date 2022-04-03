@@ -1,0 +1,11 @@
+<div id="all_container">
+  <div id="app_container" [style]="{'right': googleAuth ? '100%' : 0}">
+    <app-header></app-header>
+    <div id="main_container">
+      <div id="image_left" style="position: absolute ; left: 0"></div>
+      <router-outlet></router-outlet>
+    </div>
+    <app-footer></app-footer>
+  </div>
+  <app-google-auth *ngIf="googleAuth"></app-google-auth>
+</div>

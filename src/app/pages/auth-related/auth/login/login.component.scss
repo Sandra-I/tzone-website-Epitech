@@ -1,0 +1,22 @@
+.other_auth_method_info {
+    margin-top: 20px;
+    & span {
+        font-family: var(--tiny_font);
+        color: var(--grey);  
+        & a {
+            color: var(--blue);
+            cursor: pointer;
+            transition: all .2s;
+            &:hover {
+                text-decoration: underline;
+                opacity: .8;
+            }
+        } 
+    }
+}
+
+.password_forgotten {
+    width: 500px;
+    font-size: 13px;
+    color: var(--grey);
+}

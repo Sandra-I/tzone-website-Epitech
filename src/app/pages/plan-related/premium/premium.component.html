@@ -1,0 +1,78 @@
+<div *ngIf="plan" class="page_container" id="premium_container">
+  <ng-container *ngIf="!paid">
+    <h1>{{'Démarrer avec le forfait ' + plan.name + ' dès maintenant !' | customTranslation: ['premium', 0, {name:
+      plan.name}]}}</h1>
+
+    <p *ngIf="user.plan" class="cancel_info">
+      {{ 'Souscrire à ce forfait résiliera automatiquement votre abonnement actuel au forfait ' + user.plan.name |
+      customTranslation:
+      ['premium', 1, {name: user.plan.name}]}}
+    </p>
+    <section class="page_content" id="premium_content">
+      <div id="premium_left" class="card">
+        <h2>{{"Récapitulatif" | customTranslation}}</h2>
+        <ul id="premium_carac_list">
+          <li [ngClass]="plan.capture ? 'checked' : 'not_checked'">
+            {{'Sélection d\'une zone et récupération du texte contenu' | customTranslation: ['premium', 2]}}
+          </li>
+          <li [ngClass]="plan.preview ? 'checked' : 'not_checked'">
+            {{'Prévisualisation du texte récupéré' | customTranslation: ['premium', 3]}}
+          </li>
+          <li [ngClass]="plan.quickCapture ? 'checked' : 'not_checked'">
+            {{'Récupération du texte copié directement dans le presse-papier' | customTranslation: ['premium', 4]}}
+          </li>
+          <li [ngClass]="plan.history ? 'checked' : 'not_checked'">
+            {{'Récupération de la police utilisée' | customTranslation: ['premium', 5]}}
+          </li>
+          <li [ngClass]="plan.history ? 'checked' : 'not_checked'">
+            {{'Historique de copie relié au compte, récupérable n\'importe où' | customTranslation: ['premium', 6]}}
+          </li>
+          <li [ngClass]="plan.translation ? 'checked' : 'not_checked'">
+            {{'Traduction du texte sélectionné dans la langue choisi' | customTranslation: ['premium', 7]}}
+          </li>
+        </ul>
+        <div id="billing_infos">
+          <div id="billing_infos_left">
+            <h4>{{"Forfait " + plan.name | customTranslation: ['premium', 8, {name: plan.name} ]}}
+              (1 {{annual ? ("an" | customTranslation: 'ye') : ("mois" | customTranslation) }})
+            </h4>
+            <p>{{"Total TTC" | customTranslation}}</p>
+          </div>
+          <div id="billing_infos_right">
+            {{(annual ? plan.annuelPrice : plan.price) | currency: 'EUR'}}
+          </div>
+        </div>
+      </div>
+      <div id="premium_right" class="card">
+        <h2>
+          {{"Coordonnées bancaires" | customTranslation: ['premium', 9]}}
+        </h2>
+        <form id="payment_form" class="form">
+          <div class="form_field">
+            <label>{{"Titulaire de la carte" | customTranslation: ['premium', 10]}}</label>
+            <input (change)="setOwnerName($event.target)" id="name" type="text" formControlName="name">
+          </div>
+          <div id="card_element" class="form_field stripe_input">
+
+          </div>
+          <div id="card_errors" role="alert"></div>
+          <div>
+            <input (change)="conditionInputChange($event)" class="switch_checkbox" id="condition_input" type="checkbox">
+            <label id="condition_input_label" for="condition_input">{{'En cliquant ici, vous acceptez nos' | customTranslation:'clickInfoHere'}} <a
+              routerLink='license-agreement'>{{'Conditions générales' | customTranslation}}.</a></label>
+          </div>
+          <div class="button_container">
+            <app-button (clickEvent)="pay()" [disabled]="!ownerName || !cardComplete || !conditionOK"
+              [text]="'Payer' | customTranslation" [loadingOff]="loadingOff$">
+            </app-button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </ng-container>
+  <ng-container *ngIf="paid">
+    <div class="card" id="thank_you">
+      <h2>{{'Merci de votre achat' | customTranslation: ['premium', 11]}}</h2>
+    </div>
+  </ng-container>
+</div>

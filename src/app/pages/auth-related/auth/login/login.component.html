@@ -1,0 +1,24 @@
+<div class="card" [@card]>
+    <h1 class="card_title">{{"Connexion" | customTranslation}}</h1>
+    <form *ngIf="mainForm" class="form" [formGroup]="mainForm" (ngSubmit)="submitForm()">
+        <div class="form_field">
+            <label for="email">{{'E-mail' | customTranslation}}</label>
+            <input id="email" type="email" formControlName="email">
+        </div>
+        <div class="form_field">
+            <label for="password">{{'Mot de passe' | customTranslation}}</label>
+            <input id="password" type="password" formControlName="password">
+        </div>
+        <p class="password_forgotten"><a routerLink="/reset">{{"J'ai oublié mon mot de passe" | customTranslation:
+                'pwdForgotten'}}</a></p>
+        <div class="form_button">
+            <app-button [loadingOff]="loadingOff$" [disabled]="mainForm.invalid" type="submit"
+                text="{{'Connexion' | customTranslation}}" [style]="'plain full'"></app-button>
+        </div>
+    </form>
+    <div id="no_account" class="other_auth_method_info">
+        <span>{{'Pas de compte' | customTranslation}}? <a routerLink="/register" >{{ 'Inscrivez-vous'| customTranslation}}</a></span><br/>
+    </div>
+    
+
+</div>

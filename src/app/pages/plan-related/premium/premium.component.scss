@@ -1,0 +1,120 @@
+#premium_container {
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+    // justify-content: start !important;
+    & h1 {
+        margin: 0px auto 20px auto;
+    }
+    & .cancel_info {
+        color: var(--grey);
+        margin: 0 auto;
+        margin-bottom: 40px;
+        font-style: italic;
+    }
+    & #premium_content {
+        display: flex;
+        margin-right: 0 180px 20px 0;
+        justify-content: space-between;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 70%;
+        & #premium_left {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            width: 530px;
+            height: 450px;
+            h2 {
+                align-self: center;
+            }
+            #premium_carac_list {
+                list-style: none;
+                padding: 0;
+                margin: 0 auto;
+                width: 90%;
+                border-bottom: 1px solid var(--middle_grey);
+                padding-bottom: 35px;
+                & li {
+                    font-size: 14px;
+                    line-height: 40px;
+                    color: white;
+                    padding-left: 30px;
+                    background-position: top 50% left 5px;
+                    background-size: 17px;
+                    background-repeat: no-repeat;
+                    &.checked {
+                        background-image: url("/assets/icons/check.png");
+                    }
+                    &.not_checked {
+                        background-image: url("/assets/icons/cancel.png");
+                    }
+                }
+            }
+            & #billing_infos {
+                display: flex;
+                width: 80%;
+                margin: 0 auto;
+                padding: 20px;
+                justify-content: space-between;
+                & #billing_infos_left {
+                    display: flex;
+                    flex-direction: column;
+                    height: fit-content;
+                    justify-content: space-between;
+                    & h4 {
+                        margin-bottom: 0;
+                        margin-top: 0;
+                        color: white;
+                    }
+                    & p {
+                        font-size: 14px;
+                        margin-bottom: 0;
+                    }
+                }
+                & #billing_infos_right {
+                    align-self: flex-end;
+                    font-size: 16px;
+                }
+            }
+        }
+        & #premium_right {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            width: 400px;
+            h2 {
+                align-self: center;
+            }
+            & form {
+                & input, & .stripe_input {
+                    font-size: 18px;
+                    margin-top: 10px;
+                    padding: 12px 15px;
+                }
+                #card_element {
+                    margin-top: 20px;
+                    margin-bottom: 50px;
+                }
+                & .button_container {
+                    display: flex;
+                    width: 100%;
+                    justify-content: center;
+                    margin-bottom: 30px;
+                    margin-top: 30px;
+                }
+            }
+        }
+    }
+    #thank_you {
+        background-image: url("/assets/icons/check.png");
+        background-size: 40px;
+        background-repeat: no-repeat;
+        background-position: right 25px bottom 50%;
+    }
+}
+
+#condition_input_label {
+    font-size: 13px;
+    margin-bottom: 10px;   
+}

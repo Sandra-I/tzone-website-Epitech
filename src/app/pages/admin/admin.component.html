@@ -1,0 +1,55 @@
+<div class="page_container" id="admin_container">
+    <form [formGroup]="planForm" class="card">
+        <table class="admin_table">
+            <thead class="admin_table_head">
+                <th>Nom</th>
+                <th>Sélection</th>
+                <th>Prévisualisation</th>
+                <th>Copie rapide</th>
+                <th>Historique</th>
+                <th>Traduction</th>
+                <th>Prix mensuel</th>
+                <th>Prix annuel</th>
+                <th>Color</th>
+                <th>Cacher</th>
+                <th class="td_hidden"></th>
+            </thead>
+            <tbody formArrayName="plans">
+                <ng-container *ngFor="let plan of getPlanControls(); let i = index">
+                    <tr [formGroupName]="i">
+                        <td><input type="text" formControlName="name"></td>
+                        <td><input type="checkbox" formControlName="capture"></td>
+                        <td><input type="checkbox" formControlName="preview"></td>
+                        <td><input type="checkbox" formControlName="quickCapture"></td>
+                        <td><input type="checkbox" formControlName="history"></td>
+                        <td><input type="checkbox" formControlName="translation"></td>
+                        <td><input type="number" formControlName="price"></td>
+                        <td><input type="number" formControlName="annuelPrice"></td>
+                        <td>
+                            <select  formControlName="color">
+                                <option value="#9c5d7a">Rouge</option>
+                                <option value="#2f9f9e">Vert</option>
+                                <option value="#4897cc">Bleu</option>
+                            </select>
+                        </td>
+                        <td><input type="checkbox" formControlName="hidden"></td>
+                        <td *ngIf="isNew(i)" (click)="deletePlan(i)" class="delete td_hidden">X</td>
+                    </tr>
+                </ng-container>
+            </tbody>
+        </table>
+        <div class="buttons">
+            <div class="button_container">
+                <app-button (clickEvent)="addPlanForm()" [style]="'cancel'"
+                    [text]="'Ajouter un plan' | customTranslation">
+                </app-button>
+            </div>
+            <div class="button_container">
+                <app-button (clickEvent)="submit()" [disabled]="planForm.invalid"
+                    [text]="'Enregistrer' | customTranslation" [loadingOff]="loadingOff$">
+                </app-button>
+            </div>
+        </div>
+
+    </form>
+</div>

@@ -1,0 +1,17 @@
+<div class="page_container" id="cancel_container">
+  <ng-container *ngIf="plan && !cancelled">
+    <div class="card" id="are_you_sure">
+      <h2>{{'Êtes-vous sûr de vouloir résilier votre abonnement au forfait ' + plan.name + ' ?' | customTranslation:
+        ['cancel', 0, {name:plan.name}]}} </h2>
+      <div class="buttons">
+        <app-button [disabled]="loading" (clickEvent)="back()" [text]="'Non' | customTranslation" [style]="'cancel'" ></app-button>
+        <app-button [loadingOff]="loadingOff$" (clickEvent)="cancel()" [text]="'Oui' | customTranslation"></app-button>
+      </div>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="plan && cancelled">
+    <div class="card" id="thank_you">
+      <h2>{{'Votre résiliation a bien été prise en compte' | customTranslation: ['cancel', 1] }}</h2>
+    </div>
+  </ng-container>
+</div>

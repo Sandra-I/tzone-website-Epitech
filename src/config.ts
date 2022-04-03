@@ -1,0 +1,3 @@
+export default {
+    stripe_key: "pk_test_51KecUhKqReWVVYaH3ALIjDE3RA87qYYGqikQEZGxEYQLLcQTpQX1dAOCtDL5I4WicEltBWCtfR0Lw7SDdjaLLxPX00eOK0GssL"
+}

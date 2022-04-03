@@ -1,0 +1,17 @@
+#cancel_container {
+    .card {
+        display: flex;
+        width: 400px;
+        flex-direction: column;
+        padding: 50px 50px;
+        & h2 {
+            margin: auto;
+            text-align: center;
+        }
+        .buttons {
+            display: flex;
+            margin-top: 40px;
+            justify-content: space-around;
+        }
+    }
+}

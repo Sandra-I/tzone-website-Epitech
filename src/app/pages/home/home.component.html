@@ -1,0 +1,31 @@
+<div class="page_container text_page_container" id="home_container">
+
+  <div class="page_content text_page_content" id="home_content">
+    <h1 style="min-width: 1000px; margin-top: 50px; margin-bottom: 30px;">{{"Un besoin : récupérer le texte présent sur
+      une image ou une vidéo" | customTranslation: ['home', 0]}}</h1>
+    <h2 style="margin: 0 auto;margin-bottom: 30px;">{{"Comment faire" | customTranslation: ['home', 1]}} ?</h2>
+    <p class="page_content_paragraph" >
+      {{"Version fastidieuse : recopier manuellement le texte" | customTranslation: ['home', 2]}}<br />
+      {{"Version simple et efficace" | customTranslation: ['home', 3]}} : <span
+        style="color:#FFAC78; font-weight: bold;">TZone</span><br />
+    </p>
+
+    <h2 style="margin: 30px auto">TZone, {{"l’outil dont tu as toujours rêvé" | customTranslation: ['home', 4]}} !</h2>
+
+    <app-button [text]="'En savoir plus' | customTranslation: ['home', 9]" (clickEvent)="goTo('about')"></app-button>
+
+    <div style="margin-top: 50px;">
+      <p  style="line-height: 35px; font-size: 22px; margin-bottom: 20px">{{"Gagne du temps" | customTranslation:
+        ['home', 5]}} ! <br />
+        {{"Évite les erreurs en recopiant" | customTranslation: ['home', 6]}} ! <br>
+        {{"Tu veux traduire ton texte ? Pas de problème, avec TZone tu peux faire d’une pierre deux coups" |
+        customTranslation: ['home', 7]}} !<br/>
+        {{"Découvre nos différentes offre pour voir ce dont T-Zone est capable" |
+        customTranslation: ['home', 8]}}.
+      </p>
+
+      <app-button text="{{'Nos offres' | customTranslation}}"(clickEvent)="goTo('offers')"></app-button>
+
+    </div>
+  </div>
+</div>

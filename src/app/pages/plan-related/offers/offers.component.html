@@ -1,0 +1,57 @@
+<div class="page_container" id="offers_container">
+    <ng-container  *ngIf="plans?.length">
+        <h1>{{'Nos offres' | customTranslation}}</h1>
+
+        <p></p>
+
+        <div id="period_plan">
+            <span class="billing_period" (click)="annual = false"> {{'Facturation mensuelle'| customTranslation}}
+            </span>
+            <div id="period_switch" (click)="annual = !annual" [ngClass]="{annual}"></div>
+            <span class="billing_period" (click)="annual = true">{{'Facturation annuelle (-20% de réduction)' |
+                customTranslation}}</span>
+        </div>
+
+        <div id="plans_table">
+            <ul class="plan_col plan_infos plans">
+                <li class="plan_name"></li>
+                <li class="plan_price">
+                <li class="plan_carac_line"><span>{{'Sélection' | customTranslation}}</span></li>
+                <li class="plan_carac_line"><span>{{'Prévisualisation' | customTranslation}}</span></li>
+                <li class="plan_carac_line"><span>{{'Copie rapide' | customTranslation}}</span></li>
+
+                <li class="plan_carac_line"><span>{{'Historique' | customTranslation}}</span></li>
+                <li class="plan_carac_line"><span>{{'Traduction' | customTranslation}}</span></li>
+                <li></li>
+            </ul>
+            <ul class="plans plan_col " (click)="choosePlan(plan)"
+                (mouseover)="user?.planId == plan._id && currentPlanHover = true"
+                (mouseleave)="user?.planId == plan._id && currentPlanHover = false"
+                [ngClass]="{'hover_effect': !!plan.price, 'current': user?.planId == plan._id}"
+                *ngFor="let plan of plans">
+                <li class="plan_name"><span>{{plan.name}}</span></li>
+                <li class="plan_price" [style.backgroundColor]="plan.color">
+                    <div class="circle_price">
+                        <div *ngIf="plan.price">
+                            <span>{{(annual ? plan.annuelPrice : plan.price) | currency: 'EUR'}}</span>
+                            <span class="plan_period">/{{(annual ? 'an' : 'mois') | customTranslation}}</span>
+                        </div>
+                        <span class="free" *ngIf="!plan.price">
+                            {{'Gratuit' | customTranslation}}
+                        </span>
+                    </div>
+                </li>
+                <li class="plan_carac_line" [ngClass]="plan.capture ? 'checked' : 'not_checked'"></li>
+                <li class="plan_carac_line" [ngClass]="plan.preview ? 'checked' : 'not_checked'"></li>
+                <li class="plan_carac_line" [ngClass]="plan.quickCapture ? 'checked' : 'not_checked'"></li>
+                <li class="plan_carac_line" [ngClass]="plan.history ? 'checked' : 'not_checked'"></li>
+                <li class="plan_carac_line" [ngClass]="plan.translation ? 'checked' : 'not_checked'"></li>
+                <li *ngIf="plan.price" [style.backgroundColor]="plan.color" class="buy_now">
+                    <span>{{(user?.planId == plan._id ? currentPlanHover ? 'Résilier' : 'Actuel' : "S'abonner") |
+                        customTranslation}}</span>
+                </li>
+                <li *ngIf="!plan.price"></li>
+            </ul>
+        </div>
+    </ng-container>
+</div>

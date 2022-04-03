@@ -1,0 +1,73 @@
+<header id="header_container">
+  <div id="header_content">
+
+    <div id="logo_container">
+      <a routerLink=""><img src="/assets/logo/logo_full.png" alt="tzone_logo"></a>
+    </div>
+
+    <ul id="classic_link_list">
+      <!-- <li><a routerLinkActive="active" routerLink="download">{{'Télécharger' | customTranslation }}</a></li> -->
+      <li *ngIf="!currentUser?.isAdmin"><a routerLinkActive="active" routerLink="/about">{{'À propos' |
+          customTranslation }}</a></li>
+      <li *ngIf="!currentUser?.isAdmin"><a routerLinkActive="active" routerLink="offers">{{'Nos offres' |
+          customTranslation }}</a></li>
+      <li *ngIf="currentUser?.isAdmin"><a routerLinkActive="active" routerLink="admin">{{'Admin' | customTranslation
+          }}</a></li>
+    </ul>
+
+    <ul id="button_link_list">
+      <li *ngIf="isChrome" id="download_link">
+        <ng-container *ngIf="!currentUser?.isAdmin">
+          <a href="#" target="_blank" id="download_link_a" class="button_link">
+            {{'Télécharger l\'extension pour Google Chrome' | customTranslation: 'chromeDownload' }}
+          </a>
+          <span>{{'En cliquant sur ce lien, vous acceptez nos' | customTranslation:'clickInfo'}} <a
+              routerLink='license-agreement'>{{'Conditions générales' | customTranslation}}.</a></span>
+        </ng-container>
+      </li>
+      <li *ngIf="!isChrome" id="download_link">
+        <ng-container *ngIf="!currentUser?.isAdmin">
+          <a href="#" target="_blank" id="download_link_a" class="disabled button_link">
+            {{'Uniquement sur Google Chrome' | customTranslation: 'onlyChrome' }}
+          </a>
+        </ng-container>
+      </li>
+      <li id="account_link">
+        <div *ngIf="currentUser && !currentUser.isAdmin" class="account_links">
+          <a class="button_link "
+            (click)=" menuOpened = !menuOpened; deployLangSelector = false; $event.stopPropagation();">{{'Mon compte' |
+            customTranslation}}</a>
+          <div *ngIf="menuOpened" class="account_options">
+            <a routerActive="active" routerLink="/account" class="button_link" (click)="menuOpened = false;">
+              {{'Paramètres' | customTranslation}}
+            </a>
+            <a (click)="logout(); menuOpened = false;" class="button_link">
+              {{'Se déconnecter' | customTranslation}}
+            </a>
+          </div>
+        </div>
+        <a *ngIf="!currentUser" routerActive="active" class="button_link auth_button" [ngClass]="{'loading': authLoading}"(click)="logIn()">
+          <span>{{'Se connecter' | customTranslation}}</span>
+        </a>
+        <a *ngIf="currentUser?.isAdmin" routerActive="active" class="button_link" (click)="logout()">
+          {{'Se déconnecter' | customTranslation}}
+        </a>
+      </li>
+    </ul>
+
+  </div>
+  <div id="lang_selector_container">
+    <div id="lang_selector"
+      (click)="deployLangSelector = !deployLangSelector; menuOpened = false; $event.stopPropagation()"
+      style="background-image: url('/assets/icons/{{getCurrentLang()}}_flag.png')">
+      {{getCurrentLang().toUpperCase()}}
+      <span id="select_arrow"></span>
+    </div>
+    <div *ngIf="deployLangSelector" id="lang_selector_options">
+      <div *ngFor="let country of countries" id="{{country}}" class="lang_selector_option" (click)="selectLang(country)"
+        style="background-image: url('/assets/icons/{{country}}_flag.png')">
+        {{country.toUpperCase()}}
+      </div>
+    </div>
+  </div>
+</header>

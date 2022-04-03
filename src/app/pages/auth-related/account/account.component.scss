@@ -1,0 +1,35 @@
+
+#account_card {
+    width: 300px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+#billing_card {
+    width: 600px;
+    padding-top: 30px;
+    margin-bottom: 40px;
+    & h3 {
+        font-size: 24px;
+        & span {
+            font-size: 20px;
+        }
+        & a {
+            font-size: 18px;
+        }
+    }
+    & ul {
+        list-style: none;
+        & .bill_element {
+            display: flex;
+            width: 100%;
+            color: white;
+            justify-content: space-between;
+            
+            & span {
+                font-family: var(--title_font) !important;
+                margin-bottom: 5px;
+            }
+        }
+    }
+}
